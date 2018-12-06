@@ -1,4 +1,4 @@
-# Dominae
+# Dominae 2
 
 A BASH and Discord.py Rewrite based Discord bot (Linux only!)
 Main use is for taking pictures through the webcam of the system running the bot, along with other fun bits and bobs
@@ -9,7 +9,7 @@ To get started, you need to have .dominae in your home directory and you need to
 
 ```
 git clone https://github.com/Evshaddock/Dominae-2.git
-cp -r /Dominae/.dominae/ ~
+cp -r /Dominae-2/.dominae/ ~
 cd ~/.dominae/sh
 ./install.sh
 dominae -t <bot token>
