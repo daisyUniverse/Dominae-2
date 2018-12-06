@@ -1,0 +1,21 @@
+ #! /bin/sh
+ 
+ # Startup script for Dominae.
+ 
+ if [[ $1 = "-l" ]]; then
+    python3.5 $HOME/.dominae/dominae.py >> $HOME/.dominae/txt/log.txt
+    echo "Logging bot activity to file..."
+elif [[ $1 = "-t" ]]; then
+    echo "$2" > $HOME/.dominae/txt/token.txt
+    echo "Bot token set! Restart bot if it's running to take effect."
+elif [[ $1 = "-p" ]]; then
+    echo "$2" > $HOME/.dominae/txt/pre.txt
+    echo "Prefix set! Should be functional immediately."
+elif [[ $1 = "-h"  ]]; then
+    echo " -l to output log to ~/.dominae/txt/log.txt "
+    echo " -t <token> to set the bot token "
+    echo " -p <prefix> to set the bot prefix char "
+    echo " -h uhhh idk lol "
+else
+    python3.5 $HOME/.dominae/dominae.py
+fi
