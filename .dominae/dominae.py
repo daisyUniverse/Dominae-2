@@ -121,19 +121,19 @@ async def on_message(message):
         if message.content.startswith(pre + 'say'):
 
             f = open(txt + '/ssay.txt','w')
-            f.write(message.content.replace("ssay ",""))
+            f.write(message.content.replace(pre + "say ",""))
             f.close()
 
             subprocess.check_output(sh + "/ssay.sh")
             await channel.send(file=discord.File(img + '/ssay.png'))
 
             print ("Phrase Uploaded")
-            print ("'" + message.content.replace("ssay ","") + "'")
+            print ("'" + message.content.replace(pre + "say ","") + "'")
             print ('by {} at {} \n'.format(author, str(datetime.now())))
 
         if message.content.startswith(pre + 'vox'):
 
-            voxs = message.content.replace("svox ","")
+            voxs = message.content.replace(pre + "vox ","")
             voxfn = voxs.replace(" ",".wav \n") + ".wav"
             voxfn += " svox.wav\n"
             voxfn = voxfn.lower()
@@ -145,7 +145,7 @@ async def on_message(message):
             await channel.send(file=discord.File(cwd + '/VOX/svox.wav'))
 
             print ("Black Mesa Resarch Facility Notified")
-            print ("'" + message.content.replace("svox ","") + "'")
+            print ("'" + message.content.replace(pre + "vox ","") + "'")
             print ('by {} at {} \n'.format(author, str(datetime.now())))
 
         if message.content.startswith('#PREFIX'):
@@ -200,6 +200,15 @@ async def on_message(message):
 
             print ("Combo Shot Uploaded")
             print ('by {} at {} \n'.format(author, str(datetime.now())))
+
+
+        if message.content.startswith(pre + 'fetch'):
+            subprocess.check_output(sh + "/screenfetch.sh")
+            with open(txt + '/screenfetch.txt', 'r') as fetchfile:
+                fetch = fetchfile.read()
+            embed = discord.Embed(description=fetch, color=0x7900CE) #change stuff after the x for different hex colors on the embed
+            embed.set_author(name="Screenfetch", icon_url='https://cdn.discordapp.com/attachments/437821201461805066/552014178521710612/Centepeetle_GemPNG.webp') # set a custom icon url here
+            await channel.send(embed=embed)
 
 
         if message.content.startswith(pre + 'help svox'):
